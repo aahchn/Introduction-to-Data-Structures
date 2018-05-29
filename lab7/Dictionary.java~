@@ -1,0 +1,46 @@
+// Aaron Chan
+// lab7
+// Dictionary.java
+// 5/30/16
+
+public class Dictionary implements DictionaryInterface{
+
+    // private types and functions ------------------------------------------------
+
+    // NodeObj
+    private class Node{
+	String key;
+	String value;
+	Node left;
+	Node right;
+	// newNode()
+	// constructor for private Node type
+	Node(String k, String v) {
+	    key = k;
+	    value = v;
+	    left = right = null;
+	}
+    } 
+    private Node root;
+    private int numPairs;
+
+    // Dictionary Constructor
+    public Dictionary(){
+	root = null;
+	numPairs = 0;
+    } 
+
+    //findKey()
+    //returns node with key k in subtee at R
+    Node findKey(Node R, String key){
+	if(R==null || (key.equals(R.key)))
+	    return R;
+	if( (key.compareTo(R.key)<0 )) 
+	    return findKey(R.left, key);
+	else // strcmp(k, R->key)>0
+	    return findKey(R.right, key);
+    }
+
+
+    // findParent()
+    // returns the parent of N in the subtree rooted at R, or returns NULL

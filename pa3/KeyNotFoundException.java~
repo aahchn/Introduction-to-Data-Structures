@@ -1,0 +1,11 @@
+// Aaron Chan - aahchan
+// KeyNotFoundException.java
+// pa3
+// 4/27/16
+// Throws exception if there are duplicate keys.
+
+public class KeyNotFoundException extends RuntimeException{
+    public KeyNotFoundException(String s){
+	super(s);
+    }
+}

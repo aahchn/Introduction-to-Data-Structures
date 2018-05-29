@@ -1,0 +1,7 @@
+README
+Dictionary.java
+DictionaryInterface.java
+DuplicateKeyException.java
+KeyNotFoundException.java
+DictionaryClient.java
+Makefile

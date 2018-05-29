@@ -1,0 +1,129 @@
+//Aaron Chan
+//pa4
+//5/12/16
+//Queue.java
+
+public class Queue implements QueueInterface {
+  
+    // private inner Node class
+    private class Node {
+	Object job;
+	Node next;
+
+	Node(Object job){
+	    this.job = job;
+	    next = null;
+	}
+    }
+
+    // Fiels for Queue class
+    private Node head;
+    private Node tail;
+    private int numItems;
+
+    // Queue()
+    // constructor for the Queue class
+    public Queue(){
+	head = null;
+	tail = null;
+	numItems = 0;
+    }
+
+    // isEmpty()
+    // pre: none
+    // post: returns true if this Queue is empty, false otherwise
+    public boolean isEmpty(){
+	return (numItems==0);
+    }
+
+    // length()
+    // pre: none
+    // post: returns the length of this Queue.
+    public int length(){
+	return numItems;
+    }
+
+    // enqueue()
+    // adds newItem to back of this Queue
+    // pre: none
+    // post: !isEmpty()
+    public void enqueue(Object newItem){
+	if(numItems==0){   // special condition for an empty list. Head and tail don't point to anything
+	    head = new Node(newItem);
+	    tail = head;
+	}else{
+	    Node P = tail;
+	    P.next = new Node(newItem);
+	    tail = P.next; 
+	}
+	numItems++;
+
+    }
+
+    // dequeue()
+    // deletes and returns item from front of this Queue
+    // pre: !isEmpty()
+    // post: this Queue will have one fewer element
+    public Object dequeue() throws QueueEmptyException{
+	Object job;
+	if(numItems==0) throw new QueueEmptyException("cannot dequeue() empty queue");
+	else if(numItems==1){  // special condition: if queue has only one element, then head and tail will point to nothing after the operation
+	    job = head.job;
+	    head = null;
+	    tail = null;
+	}
+	else{
+	    job = head.job;
+	    head = head.next;
+	}
+	numItems--;
+
+	return job;
+    }
+
+    // peek()
+    // pre: !isEmpty()
+    // post: returns item at front of Queue
+    public Object peek() throws QueueEmptyException{
+	if(numItems==0) throw new QueueEmptyException("cannot peek() empty queue");
+	return head.job;
+
+    }
+
+    // dequeueAll()
+    // sets this Queue to the empty state
+    // pre: !isEmpty()
+    // post: isEmpty()
+    public void dequeueAll() throws QueueEmptyException{
+	if(numItems==0) throw new QueueEmptyException("cannot dequeueAll() empty queue");
+	head = tail = null;
+	numItems = 0;
+
+    }
+
+    // copyQueue()
+    // copies a Queue to another object
+    // pre: none
+    // post: returns a new object with the copied Queue
+    public Object copyQueue(){
+	Queue copyQueue = new Queue();
+	Node N = null;
+
+	for(N=this.head; N!=null; N=N.next){
+	    copyQueue.enqueue(N.job);
+	}
+	return copyQueue;
+      
+    }
+
+    // toString()
+    // overrides Object's toString() method
+    public String toString(){
+	StringBuffer sb = new StringBuffer();
+	for(Node N = head; N!=null; N=N.next){
+	   sb.append(N.job.toString()).append(" ");
+	}
+	return new String(sb);
+    }
+}
+

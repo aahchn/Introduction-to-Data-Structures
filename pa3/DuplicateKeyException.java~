@@ -1,0 +1,10 @@
+// Aaron Chan - aahchan
+// DuplicateKeyException.java
+// pa3
+// 4/27/16
+
+public class DuplicateKeyException extends RuntimeException{
+    public DuplicateKeyException(String s){
+	super(s);
+    }
+} 

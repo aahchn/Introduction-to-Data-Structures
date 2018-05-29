@@ -1,0 +1,9 @@
+// Aaron Chan - aahchan
+// 4/27/16
+// pa3
+// DictionaryTest.java
+// To serve as a test client for the Dictionary ADT while it is under construction
+
+class DictionaryTest{
+    public static void main (String[] args){
+	Dictionary Test = new Dictionary();

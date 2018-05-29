@@ -1,0 +1,50 @@
+// Aaron Chan
+// pa5
+// Dictionary.c
+// 5/28/16
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include<assert.h>
+#include"Dictionary.h"
+
+const int tableSize = 101;
+
+// NodeObj
+typedef struct NodeObj{
+  char* key;
+  char* value;
+  struct NodeObj* next;
+} NodeObj;
+
+// Node
+typedef NodeObj* Node;
+
+// newNode()
+// constructor of the Node type
+Node newNode(char* k, char* v){
+  Node N = malloc(sizeof(NodeObj));
+  assert(N!=NULL);
+  N->key = k;
+  N->value = v;
+  N->next = NULL;
+  return(N);
+}
+
+// freeNode()
+// destructor for the Node type
+void freeNode(Node* pN){
+  if(pN!=NULL && *pN!=NULL ){
+    free(*pN);
+    *pN = NULL;
+  }
+}
+
+// DictionaryObject
+typedef struct DictionaryObj{
+  Node *table;
+  int numItems;
+}
+  DictionaryObj;
+   

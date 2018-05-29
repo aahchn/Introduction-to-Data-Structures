@@ -1,0 +1,8 @@
+// Aaron Chan
+// pa1
+// README for Recursion.java
+
+README
+
+Makefile.................Makefile for the Recursion.java
+Recursion.java...........Program that reverses the things in the given array and gives the max and min index.

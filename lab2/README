@@ -1,0 +1,7 @@
+// Aaron Chan aahchan
+// 4/7/16
+
+README
+
+Makefile ..................... Makefile for FileReverse.java
+FileReverse.java ............. A program that reads line of input, parse tokens and print the tokens backwards
